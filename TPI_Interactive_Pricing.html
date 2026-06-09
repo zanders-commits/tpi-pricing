@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPI Hospitality × Reeco — Interactive Pricing Proposal</title>
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --navy-800: #162F52;
+    --mint: #00B28A;
+    --mint-light: #E6F7F3;
+    --mint-dark: #008F6E;
+    --stone: #F5F5F3;
+    --stone-200: #E8E8E4;
+    --stone-600: #8A8A84;
+    --white: #ffffff;
+    --red-soft: #FFF0F0;
+    --red: #C0392B;
+    --amber: #F59E0B;
+    --amber-light: #FFFBEB;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--stone);
+    color: var(--navy);
+    font-size: 13px;
+  }
+  :root {
+    --h-header: 56px;
+    --h-summary: 58px;
+    --h-legend: 44px;
+    --stick-summary: var(--h-header);
+    --stick-legend: calc(var(--h-header) + var(--h-summary));
+    --stick-thead: calc(var(--h-header) + var(--h-summary) + var(--h-legend));
+  }
+  .page-header {
+    background: var(--navy);
+    color: white;
+    padding: 14px 32px;
+    height: var(--h-header);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.22);
+  }
+  .page-header-inner {
+    max-width: 1400px; margin: 0 auto; height: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .header-brand { display: flex; align-items: center; gap: 10px; }
+  .reeco-logo { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; color: var(--mint); }
+  .header-divider { color: rgba(255,255,255,0.3); font-size: 18px; }
+  .header-title { font-size: 15px; font-weight: 600; color: white; letter-spacing: -0.01em; }
+  .header-subtitle { font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 500; margin-top: 2px; }
+  .header-badge {
+    background: rgba(0,178,138,0.15); border: 1px solid rgba(0,178,138,0.3);
+    color: var(--mint); font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .summary-bar {
+    background: white; border-bottom: 1px solid var(--stone-200);
+    padding: 9px 32px; height: var(--h-summary);
+    position: sticky; top: var(--stick-summary); z-index: 99;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .summary-bar-inner {
+    max-width: 1400px; margin: 0 auto; height: 100%;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .summary-stat { display: flex; flex-direction: column; gap: 2px; }
+  .summary-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--stone-600); font-weight: 600; }
+  .summary-stat-value { font-size: 17px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; font-feature-settings: "tnum"; }
+  .summary-stat-value.mint { color: var(--mint-dark); }
+  .summary-divider { width: 1px; height: 36px; background: var(--stone-200); }
+  .summary-note { font-size: 12px; color: var(--stone-600); font-style: italic; margin-left: auto; }
+  .legend-bar {
+    background: var(--mint-light); border-bottom: 1px solid rgba(0,178,138,0.2);
+    padding: 8px 32px; height: var(--h-legend);
+    position: sticky; top: var(--stick-legend); z-index: 98;
+  }
+  .legend-bar-inner {
+    max-width: 1400px; margin: 0 auto; height: 100%;
+    display: flex; align-items: center; gap: 18px;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+  }
+  .legend-bar-inner::-webkit-scrollbar { display: none; }
+  .legend-label { font-size: 11px; color: var(--navy-800); font-weight: 700; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--navy); }
+  .legend-price { background: var(--navy); color: white; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; font-feature-settings: "tnum"; }
+  .legend-price.mint { background: var(--mint-dark); }
+  .table-wrap { max-width: 1400px; margin: 16px auto 40px; padding: 0 24px; }
+  .table-card {
+    background: white; border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid var(--stone-200); overflow: visible;
+  }
+  .table-toolbar {
+    padding: 10px 16px; border-bottom: 1px solid var(--stone-200);
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .toolbar-label { font-size: 12px; font-weight: 700; color: var(--stone-600); }
+  .filter-btn {
+    padding: 5px 12px; border-radius: 5px; border: 1px solid var(--stone-200);
+    background: var(--stone); font-size: 11px; font-weight: 600;
+    color: var(--navy); cursor: pointer; transition: all 0.15s;
+  }
+  .filter-btn:hover { background: var(--mint-light); border-color: var(--mint); }
+  .filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .search-input {
+    margin-left: auto; padding: 5px 12px; border-radius: 5px;
+    border: 1px solid var(--stone-200); font-size: 12px; width: 200px;
+    outline: none; color: var(--navy);
+  }
+  .search-input:focus { border-color: var(--mint); }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    background: var(--stone); padding: 10px 12px; text-align: left;
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--stone-600);
+    border-bottom: 1px solid var(--stone-200); white-space: nowrap;
+    position: sticky; top: var(--stick-thead); z-index: 10;
+    box-shadow: 0 1px 0 var(--stone-200);
+  }
+  thead th.right { text-align: right; }
+  tbody tr { border-bottom: 1px solid var(--stone-200); transition: background 0.1s; }
+  tbody tr:hover { background: #FAFAFA; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 8px 12px; vertical-align: middle; }
+  .prop-name { font-size: 12px; font-weight: 600; color: var(--navy); max-width: 280px; }
+  .type-badge { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+  .type-fs { background: var(--navy); color: white; }
+  .type-ls { background: var(--stone-200); color: var(--navy); }
+  .type-r { background: var(--amber); color: var(--navy); }
+  .rooms-val { font-size: 12px; color: var(--stone-600); font-feature-settings: "tnum"; text-align: right; }
+  .discount-chip {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 1px 6px; border-radius: 3px; margin-left: 4px;
+  }
+  .disc-30 { background: #FFF0F0; color: var(--red); }
+  .disc-15 { background: var(--mint-light); color: var(--mint-dark); }
+  .modules-cell { font-size: 11px; color: var(--stone-600); }
+  .modules-included { color: var(--mint-dark); font-weight: 600; }
+  .row-total { font-size: 13px; font-weight: 700; text-align: right; font-feature-settings: "tnum"; white-space: nowrap; color: var(--navy); }
+  .row-annual { font-size: 11px; font-weight: 600; text-align: right; font-feature-settings: "tnum"; color: var(--stone-600); white-space: nowrap; }
+  tfoot td { padding: 12px; background: var(--navy); color: white; font-weight: 700; font-size: 13px; border-top: 2px solid var(--mint); }
+  tfoot td.foot-label { font-size: 12px; letter-spacing: 0.5px; }
+  tfoot td.foot-total { text-align: right; font-size: 16px; font-feature-settings: "tnum"; color: var(--mint); }
+  tfoot td.foot-annual { text-align: right; font-size: 13px; font-feature-settings: "tnum"; color: rgba(255,255,255,0.7); }
+  .section-header td {
+    background: var(--stone); padding: 6px 12px; font-size: 10px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--stone-600); border-bottom: 1px solid var(--stone-200);
+  }
+  tr.excluded { opacity: 0.4; }
+  @media (max-width: 900px) {
+    .table-wrap { padding: 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="header-brand">
+      <div class="reeco-logo">reeco.</div>
+      <div class="header-divider">×</div>
+      <div>
+        <div class="header-title">TPI Hospitality — Interactive Pricing Proposal</div>
+        <div class="header-subtitle">Prepared June 2026 &nbsp;·&nbsp; 25 hotels + 3 restaurants &nbsp;·&nbsp; Enterprise discount applied</div>
+      </div>
+    </div>
+    <div class="header-badge">Confidential · For TPI Hospitality</div>
+  </div>
+</div>
+
+<div class="summary-bar">
+  <div class="summary-bar-inner">
+    <div class="summary-stat">
+      <div class="summary-stat-label">Properties</div>
+      <div class="summary-stat-value" id="stat-props">28</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="summary-stat-label">Hotels Only</div>
+      <div class="summary-stat-value mint" id="stat-hotels">$15,002.50/mo</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="summary-stat-label">All-In Monthly</div>
+      <div class="summary-stat-value mint" id="stat-monthly">$16,577.50/mo</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="summary-stat-label">Annual ARR</div>
+      <div class="summary-stat-value mint" id="stat-arr">$198,930/yr</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="summary-stat-label">Setup Credit</div>
+      <div class="summary-stat-value" id="stat-setup">$16,750 waived</div>
+    </div>
+    <div class="summary-note">7 full-service (Inv + Culinary included) · 18 select-service · 3 restaurants</div>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-bar-inner">
+    
+    <span class="legend-label">TPI Custom Pricing:</span>
+    <span class="legend-item"><span class="type-badge type-fs">FS</span> ≥120 rooms <span class="legend-price mint">$977.50/mo</span> <span style="font-size:9px;color:var(--stone-600)">Bundle+Inv+Cul · 15% disc</span></span>
+    <span class="legend-item"><span class="type-badge type-fs">FS</span> &lt;120 rooms <span class="legend-price mint">$805.00/mo</span> <span style="font-size:9px;color:var(--stone-600)">Bundle+Inv+Cul · 30% disc</span></span>
+    <span class="legend-item"><span class="type-badge type-ls">LS</span> ≥120 rooms <span class="legend-price">$552.50/mo</span> <span style="font-size:9px;color:var(--stone-600)">Bundle only · 15% disc</span></span>
+    <span class="legend-item"><span class="type-badge type-ls">LS</span> &lt;120 rooms <span class="legend-price">$455.00/mo</span> <span style="font-size:9px;color:var(--stone-600)">Bundle only · 30% disc</span></span>
+    <span class="legend-item"><span class="type-badge" style="background:var(--stone-600);color:white;">R</span> Restaurant <span class="legend-price">$525/mo</span></span>
+    <span class="legend-item" style="color: var(--stone-600); font-size:11px;">All setup fees waived · FS includes Inventory + Culinary</span>
+    
+  </div>
+</div>
+
+<div class="table-wrap">
+  <div class="table-card">
+    <div class="table-toolbar">
+      <span class="toolbar-label">Filter:</span>
+      <button class="filter-btn active" onclick="filterType('all', this)">All (28)</button>
+      <button class="filter-btn" onclick="filterType('F', this)">Full-Service (7)</button>
+      <button class="filter-btn" onclick="filterType('L', this)">Select-Service (18)</button>
+      <button class="filter-btn" onclick="filterType('R', this)">Restaurants (3)</button>
+      <input type="text" class="search-input" placeholder="Search properties…" oninput="filterSearch(this.value)">
+    </div>
+    <div class="table-scroll">
+    <table id="prop-table">
+      <thead>
+        <tr>
+          <th style="min-width:280px;">Property</th>
+          <th>Type</th>
+          <th class="right">Rooms</th>
+          <th>Discount Tier</th>
+          <th>Modules Included</th>
+          <th class="right">Monthly</th>
+          <th class="right">Annual</th>
+        </tr>
+      </thead>
+      <tbody id="prop-tbody">
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="foot-label" colspan="5">Portfolio Total (25 hotels + 3 restaurants)</td>
+          <td class="foot-total">$16,577.50/mo</td>
+          <td class="foot-annual">$198,930/yr</td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const PRICES = {"fs_large": 977.5, "fs_small": 805.0, "ls_large": 552.5, "ls_small": 455.0, "rest": 525.0, "inv_fs": 0, "inv_ls": 0, "culinary": 0, "threshold": 120};
+const PROPERTIES = [["Courtyard by Marriott Maple Grove", "F", 115, false], ["Courtyard by Marriott Roseville", "F", 120, false], ["Hilton Garden Inn Eagan", "F", 99, false], ["Hilton Garden Inn Shoreview", "F", 99, false], ["Holiday Inn Maple Grove", "F", 136, false], ["Margaritaville Fort Myers Beach", "F", 250, false], ["Compass Naples", "F", 122, false], ["Best Western Plus Willmar", "L", 92, false], ["Country Inn & Suites Willmar", "L", 50, false], ["Hampton Inn Eden Prairie", "L", 105, false], ["Hampton Inn Fairmont", "L", 51, false], ["Hampton Inn Roseville", "L", 100, false], ["Hampton Inn Spicer", "L", 51, false], ["Best Western Fairmont", "L", 101, false], ["Holiday Inn Express Willmar", "L", 73, false], ["Home2 Suites Roseville", "L", 102, false], ["Residence Inn Maple Grove", "L", 96, false], ["Residence Inn Roseville", "L", 108, false], ["SpringHill Suites Maple Grove", "L", 84, false], ["Staybridge Suites Maple Grove", "L", 119, false], ["AC Hotel St. Louis Park", "L", 126, false], ["Hampton Inn Maple Grove", "L", 120, false], ["Homewood Suites New Brighton", "L", 124, false], ["Homewood Suites St. Louis Park", "L", 125, false], ["Staybridge Suites Bloomington", "L", 127, false], ["Green Mill Fairmont", "R", 0, false], ["Green Mill Willmar", "R", 0, false], ["Ruffs Restaurant Willmar", "R", 0, false]];
+const THRESHOLD = 120;
+
+function getBasePrice(type, rooms) {
+  if (type === 'F') return rooms >= THRESHOLD ? PRICES.fs_large : PRICES.fs_small;
+  if (type === 'L') return rooms >= THRESHOLD ? PRICES.ls_large : PRICES.ls_small;
+  if (type === 'R') return PRICES.rest;
+  return 0;
+}
+
+function getDiscount(type, rooms) {
+  if (type === 'R') return null;
+  return rooms >= THRESHOLD ? '15%' : '30%';
+}
+
+function getModules(type) {
+  if (type === 'F') return 'Bundle + Inventory + Culinary';
+  if (type === 'L') return 'Bundle only';
+  return 'Restaurant Package';
+}
+
+function fmt(n) {
+  if (n % 1 === 0) return '$' + n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function fmtAnn(n) {
+  return '$' + Math.round(n * 12).toLocaleString('en-US') + ' / yr';
+}
+
+let activeFilter = 'all';
+let searchTerm = '';
+
+function buildTable() {
+  const tbody = document.getElementById('prop-tbody');
+  tbody.innerHTML = '';
+
+  // Group by section
+  const sections = [
+    { label: 'Full-Service Hotels — Bundle + Inventory + Culinary Included', filter: 'F' },
+    { label: 'Select-Service Hotels — Bundle (AP + Purchasing)', filter: 'L' },
+    { label: 'Restaurants', filter: 'R' },
+  ];
+
+  sections.forEach(sec => {
+    const props = PROPERTIES.filter(p => p[1] === sec.filter);
+    if (props.length === 0) return;
+
+    const headerRow = document.createElement('tr');
+    headerRow.classList.add('section-header');
+    headerRow.dataset.section = sec.filter;
+    headerRow.innerHTML = `<td colspan="7">${sec.label}</td>`;
+    tbody.appendChild(headerRow);
+
+    props.forEach((p, i) => {
+      const [name, type, rooms, closed] = p;
+      const globalIdx = PROPERTIES.indexOf(p);
+      const price = getBasePrice(type, rooms);
+      const discount = getDiscount(type, rooms);
+      const modules = getModules(type);
+
+      const tr = document.createElement('tr');
+      tr.dataset.idx = globalIdx;
+      tr.dataset.type = type;
+      tr.dataset.name = name.toLowerCase();
+      if (closed) tr.classList.add('excluded');
+
+      const discountChip = discount
+        ? `<span class="discount-chip ${discount === '30%' ? 'disc-30' : 'disc-15'}">${discount} off</span>`
+        : '';
+      const modulesCell = type === 'F'
+        ? `<span class="modules-included">✓ Bundle + Inventory + Culinary</span>`
+        : type === 'L'
+          ? `<span style="color:var(--stone-600)">Bundle (AP + Purchasing)</span>`
+          : `<span style="color:var(--stone-600)">F&B Package</span>`;
+      const roomsCell = rooms > 0 ? rooms.toLocaleString() : '—';
+
+      let typeBadge = '';
+      if (type === 'F') typeBadge = '<span class="type-badge type-fs">FS</span>';
+      else if (type === 'L') typeBadge = '<span class="type-badge type-ls">LS</span>';
+      else typeBadge = '<span class="type-badge type-r">R</span>';
+
+      tr.innerHTML = `
+        <td class="prop-name">${name}</td>
+        <td>${typeBadge}</td>
+        <td class="rooms-val">${roomsCell}</td>
+        <td class="modules-cell">${discount ? `<span style="color:var(--stone-600)">${discount === '30%' ? '&lt;120 rooms' : '≥120 rooms'}</span> ${discountChip}` : '—'}</td>
+        <td class="modules-cell">${modulesCell}</td>
+        <td class="row-total">${fmt(price)}</td>
+        <td class="row-annual">${fmtAnn(price)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilter();
+}
+
+function applyFilter() {
+  document.querySelectorAll('#prop-tbody tr').forEach(tr => {
+    if (tr.classList.contains('section-header')) {
+      const sec = tr.dataset.section;
+      const typeMatch = activeFilter === 'all' || sec === activeFilter;
+      tr.style.display = typeMatch ? '' : 'none';
+      return;
+    }
+    const type = tr.dataset.type;
+    const name = tr.dataset.name || '';
+    const typeMatch = activeFilter === 'all' || type === activeFilter;
+    const searchMatch = !searchTerm || name.includes(searchTerm.toLowerCase());
+    tr.style.display = (typeMatch && searchMatch) ? '' : 'none';
+  });
+}
+
+function filterType(type, btn) {
+  activeFilter = type;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter();
+}
+
+function filterSearch(val) {
+  searchTerm = val.toLowerCase();
+  applyFilter();
+}
+
+buildTable();
+</script>
+</body>
+</html>
