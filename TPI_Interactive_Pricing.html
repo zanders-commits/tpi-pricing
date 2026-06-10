@@ -2,268 +2,182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPI Hospitality × Reeco — Interactive Pricing Proposal</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TPI Hospitality x Reeco | Interactive Pricing</title>
 <style>
-  :root{--navy:#0B1F3A;--navy-800:#162F52;--mint:#00B28A;--mint-light:#E6F7F3;--mint-dark:#008F6E;--stone:#F5F5F3;--stone-200:#E8E8E4;--stone-600:#8A8A84;--red:#C0392B}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--stone);color:var(--navy);font-size:13px}
-  :root{--hH:56px;--hS:58px;--hL:40px;--stS:var(--hH);--stL:calc(var(--hH) + var(--hS));--stT:calc(var(--hH) + var(--hS) + var(--hL))}
-  .ph{background:var(--navy);height:var(--hH);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.22);padding:0 32px}
-  .phi{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .brand{display:flex;align-items:center;gap:10px}
-  .logo{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--mint)}
-  .hdiv{color:rgba(255,255,255,.3);font-size:18px}
-  .ht{font-size:15px;font-weight:600;color:#fff}
-  .hs{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px}
-  .hbadge{background:rgba(0,178,138,.15);border:1px solid rgba(0,178,138,.3);color:var(--mint);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px}
-  .sb{background:#fff;border-bottom:1px solid var(--stone-200);height:var(--hS);position:sticky;top:var(--stS);z-index:99;box-shadow:0 1px 4px rgba(0,0,0,.05);padding:0 32px}
-  .sbi{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;gap:20px}
-  .st{display:flex;flex-direction:column;gap:2px}
-  .stl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--stone-600);font-weight:600}
-  .stv{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-.02em;font-feature-settings:"tnum"}
-  .stv.m{color:var(--mint-dark)}
-  .sd{width:1px;height:36px;background:var(--stone-200)}
-  .sn{font-size:11px;color:var(--stone-600);font-style:italic;margin-left:auto;text-align:right;max-width:260px;line-height:1.4}
-  .lb{background:var(--mint-light);border-bottom:1px solid rgba(0,178,138,.2);height:var(--hL);position:sticky;top:var(--stL);z-index:98;padding:0 32px}
-  .lbi{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;gap:16px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-  .lbi::-webkit-scrollbar{display:none}
-  .ll{font-size:11px;font-weight:700;color:var(--navy-800)}
-  .li{display:flex;align-items:center;gap:5px;font-size:11px}
-  .lp{background:var(--navy);color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;font-feature-settings:"tnum"}
-  .lp.m{background:var(--mint-dark)}
-  .tw{max-width:1400px;margin:16px auto 40px;padding:0 24px}
-  .tc{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid var(--stone-200)}
-  .tb2{padding:10px 16px;border-bottom:1px solid var(--stone-200);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .tl{font-size:12px;font-weight:700;color:var(--stone-600)}
-  .fb{padding:5px 12px;border-radius:5px;border:1px solid var(--stone-200);background:var(--stone);font-size:11px;font-weight:600;color:var(--navy);cursor:pointer;transition:all .15s}
-  .fb:hover{background:var(--mint-light);border-color:var(--mint)}
-  .fb.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-  .srch{margin-left:auto;padding:5px 12px;border-radius:5px;border:1px solid var(--stone-200);font-size:12px;width:200px;outline:none}
-  .srch:focus{border-color:var(--mint)}
-  table{width:100%;border-collapse:collapse}
-  thead th{background:var(--stone);padding:10px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--stone-600);border-bottom:1px solid var(--stone-200);white-space:nowrap;position:sticky;top:var(--stT);z-index:10;box-shadow:0 1px 0 var(--stone-200)}
-  th.r{text-align:right}
-  tbody tr{border-bottom:1px solid var(--stone-200);transition:background .1s}
-  tbody tr:hover{background:#FAFAFA}
-  tbody tr:last-child{border-bottom:none}
-  td{padding:8px 12px;vertical-align:middle}
-  .pn{font-size:12px;font-weight:600;color:var(--navy);max-width:260px}
-  .b2{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700}
-  .bfs{background:var(--navy);color:#fff}
-  .bls{background:var(--stone-200);color:var(--navy)}
-  .rv{font-size:12px;color:var(--stone-600);text-align:right;font-feature-settings:"tnum"}
-  .bp{font-size:13px;font-weight:700;text-align:right;font-feature-settings:"tnum";white-space:nowrap}
-  .tc2{text-align:center}
-  .twp{display:flex;align-items:center;justify-content:center;gap:6px}
-  .tog{position:relative;width:34px;height:18px;cursor:pointer}
-  .tog input{opacity:0;width:0;height:0;position:absolute}
-  .ttr{position:absolute;inset:0;border-radius:9px;background:var(--stone-200);transition:background .2s}
-  .tog input:checked+.ttr{background:var(--mint)}
-  .tth{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s;pointer-events:none}
-  .tog input:checked~.tth{transform:translateX(16px)}
-  .tpr{font-size:10px;font-weight:600;color:var(--stone-600);min-width:36px;font-feature-settings:"tnum"}
-  .tpr.on{color:var(--mint-dark)}
-  .ps{font-size:11px;padding:3px 6px;border-radius:4px;border:1px solid var(--stone-200);background:#fff;color:var(--navy);min-width:160px;max-width:190px;outline:none}
-  .ps:focus{border-color:var(--mint)}
-  .ph2{display:none}
-  .rt{font-size:13px;font-weight:700;text-align:right;font-feature-settings:"tnum";white-space:nowrap}
-  .ra{font-size:11px;font-weight:600;text-align:right;font-feature-settings:"tnum";color:var(--stone-600);white-space:nowrap}
-  .dc{display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle}
-  .d31{background:#FFF0F0;color:var(--red)}
-  .d42{background:var(--mint-light);color:var(--mint-dark)}
-  tfoot td{padding:12px;background:var(--navy);color:#fff;font-weight:700;font-size:13px;border-top:2px solid var(--mint)}
-  .fl{font-size:12px;letter-spacing:.5px}
-  .fm{text-align:right;font-size:16px;font-feature-settings:"tnum";color:var(--mint)}
-  .fa{text-align:right;font-size:13px;font-feature-settings:"tnum";color:rgba(255,255,255,.7)}
-  .sr td{background:var(--stone);padding:6px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--stone-600);border-bottom:1px solid var(--stone-200)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;background:#f4f6f9;color:#1a1a2e;min-height:100vh}
+.header{background:#1a1a2e;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.header h1{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+.header .sub{font-size:0.82rem;color:#8899bb;margin-top:.2rem}
+.hright{text-align:right}
+.hright .date{font-size:0.78rem;color:#8899bb}
+.sticky{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #00c896;padding:.85rem 2rem;display:flex;gap:2.5rem;justify-content:center;align-items:center;flex-wrap:wrap;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.stat{text-align:center}
+.stat-n{font-size:1.35rem;font-weight:800;color:#00c896;font-variant-numeric:tabular-nums}
+.stat-l{font-size:0.68rem;color:#999;text-transform:uppercase;letter-spacing:.07em;margin-top:.1rem}
+.stat.hl{background:#f0fdf8;border-radius:8px;padding:.3rem .9rem;border:1.5px solid rgba(0,200,150,.25)}
+.wrap{max-width:1160px;margin:0 auto;padding:2rem}
+.legend{display:flex;flex-wrap:wrap;gap:.75rem 2rem;margin-bottom:1.75rem;padding:1.25rem 1.5rem;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-size:0.85rem;align-items:center}
+.legend strong{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:#999;margin-right:.5rem}
+.li{display:flex;align-items:center;gap:.35rem}
+.chip{display:inline-block;color:#fff;font-size:0.68rem;font-weight:700;padding:.15rem .5rem;border-radius:999px;letter-spacing:.04em}
+.chip.fs{background:#0055ee}
+.chip.ss{background:#7722cc}
+.chip.disc{background:#00c896}
+.chip.disc2{background:#009970}
+s{color:#ccc}
+.tbl-wrap{overflow-x:auto;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:0.88rem}
+thead tr{background:#1a1a2e;color:#fff}
+th{padding:.7rem 1rem;text-align:left;font-weight:600;font-size:0.74rem;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+th.c,td.c{text-align:center}
+th.r,td.r{text-align:right}
+tbody tr{border-bottom:1px solid #f0f0f0;transition:background .1s}
+tbody tr:hover{background:#f9fffe}
+tbody tr.fs-row{border-left:3px solid #0055ee}
+tbody tr.ss-row{border-left:3px solid #7722cc}
+td{padding:.65rem 1rem;vertical-align:middle}
+.pname{font-weight:600;font-size:.88rem}
+.ptype-fs{color:#0055ee;font-size:.72rem;font-weight:700;background:#eef2ff;padding:.15rem .4rem;border-radius:4px}
+.ptype-ss{color:#7722cc;font-size:.72rem;font-weight:700;background:#f5f0ff;padding:.15rem .4rem;border-radius:4px}
+input[type=checkbox]{width:17px;height:17px;accent-color:#00c896;cursor:pointer}
+.bprice{color:#00c896;font-weight:700}
+.rtotal{font-weight:700}
+tfoot tr td{padding:.7rem 1rem;font-size:.88rem}
+tfoot .tr-list td{color:#bbb}
+tfoot .tr-list td s{color:#bbb}
+tfoot .tr-your td{font-weight:700;color:#00c896;border-top:2px solid #e5e7eb}
+tfoot .tr-save td{font-weight:700;color:#00c896;background:#f0fdf8}
+tfoot td.r{text-align:right}
+tfoot td.c{text-align:center}
+.note{margin-top:1.5rem;padding:1rem 1.5rem;background:#fff;border-radius:10px;font-size:.83rem;color:#777;box-shadow:0 1px 3px rgba(0,0,0,.06);line-height:1.6}
+.note strong{color:#444}
 </style>
 </head>
 <body>
-
-<div class="ph">
-  <div class="phi">
-    <div class="brand">
-      <div class="logo">reeco.</div>
-      <div class="hdiv">×</div>
-      <div>
-        <div class="ht">TPI Hospitality — Interactive Pricing Proposal</div>
-        <div class="hs">Prepared June 2026 &nbsp;·&nbsp; 25 hotels &nbsp;·&nbsp; Toggle Inventory + Culinary per property</div>
-      </div>
-    </div>
-    <div class="hbadge">Confidential · For TPI Hospitality</div>
+<div class="header">
+  <div>
+    <h1>TPI Hospitality &times; Reeco &mdash; Interactive Pricing</h1>
+    <div class="sub">25 Properties &middot; Toggle Inventory &amp; Culinary add-ons to see live totals</div>
   </div>
+  <div class="hright"><div class="date">Prepared June 2026</div></div>
 </div>
 
-<div class="sb">
-  <div class="sbi">
-    <div class="st"><div class="stl">Properties</div><div class="stv">25</div></div>
-    <div class="sd"></div>
-    <div class="st"><div class="stl">Monthly (Floor)</div><div class="stv m" id="s-mo">$10,050</div></div>
-    <div class="sd"></div>
-    <div class="st"><div class="stl">Annual ARR</div><div class="stv m" id="s-arr">$120,600</div></div>
-    <div class="sd"></div>
-    <div class="st"><div class="stl">Inventory On</div><div class="stv" id="s-inv">0 props</div></div>
-    <div class="sd"></div>
-    <div class="st"><div class="stl">Culinary On</div><div class="stv" id="s-cul">0 props</div></div>
-    <div class="sd"></div>
-    <div class="st"><div class="stl">Setup Credit</div><div class="stv">$13,500 waived</div></div>
-    <div class="sn" id="s-note">Toggle add-ons per property to model your configuration</div>
-  </div>
+<div class="sticky" id="sbar">
+  <div class="stat"><div class="stat-n" id="s-mo">$10,200</div><div class="stat-l">Monthly Total</div></div>
+  <div class="stat"><div class="stat-n" id="s-yr">$122,400</div><div class="stat-l">Annual Total</div></div>
+  <div class="stat hl"><div class="stat-n" id="s-save">$72,600</div><div class="stat-l">You Save vs. List / Year</div></div>
 </div>
 
-<div class="lb">
-  <div class="lbi">
-    <span class="ll">AP + Purchasing:</span>
-    <span class="li"><span class="b2 bfs">FS</span><span class="b2 bls" style="margin-left:3px">LS</span> ≥120 rooms <span class="lp m">$450/mo</span> <span style="font-size:10px;color:var(--stone-600)">31% off list</span></span>
-    <span class="li"><span class="b2 bfs">FS</span><span class="b2 bls" style="margin-left:3px">LS</span> &lt;120 rooms <span class="lp">$375/mo</span> <span style="font-size:10px;color:var(--stone-600)">42% off list</span></span>
-    <span class="li">+ Inventory <span class="lp">$200/mo</span> <span style="font-size:10px;color:var(--stone-600)">20% off list</span></span>
-    <span class="li">+ Culinary <span class="lp">$200/mo</span> <span style="font-size:10px;color:var(--stone-600)">20% off list</span></span>
-    <span class="li" style="color:var(--stone-600);font-size:10px">All setup fees waived</span>
+<div class="wrap">
+  <div class="legend">
+    <strong>Pricing Key:</strong>
+    <div class="li"><span class="chip fs">FS</span> Full Service &mdash; <s>$650</s>&nbsp;<strong>$500/mo</strong>&nbsp;<span class="chip disc">23% OFF</span></div>
+    <div class="li"><span class="chip ss">SS</span> Select Service &mdash; <s>$650</s>&nbsp;<strong>$400/mo</strong>&nbsp;<span class="chip disc">38% OFF</span></div>
+    <div class="li">&#10010; Add-On (each) &mdash; <s>$250</s>&nbsp;<strong>$200/mo/prop</strong>&nbsp;<span class="chip disc2">20% OFF</span></div>
+    <div class="li" style="margin-left:auto;color:#00c896;font-weight:700;font-size:.9rem">Setup fee: fully waived</div>
   </div>
-</div>
 
-<div class="tw">
-  <div class="tc">
-    <div class="tb2">
-      <span class="tl">Filter:</span>
-      <button class="fb active" onclick="filt('all',this)">All (25)</button>
-      <button class="fb" onclick="filt('F',this)">Full-Service (2)</button>
-      <button class="fb" onclick="filt('L',this)">Select-Service (23)</button>
-      <input class="srch" type="text" placeholder="Search properties…" oninput="fsrch(this.value)">
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th style="min-width:260px">Property</th>
-          <th>Type</th>
-          <th class="r">Rooms</th>
-          <th class="r" style="min-width:100px">AP + Purchasing</th>
-          <th style="text-align:center;min-width:110px">Inventory</th>
-          <th style="text-align:center;min-width:110px">Culinary</th>
-          <th style="min-width:180px">POS System</th>
-          <th class="r">Monthly</th>
-          <th class="r">Annual</th>
-        </tr>
-      </thead>
-      <tbody id="tb"></tbody>
-      <tfoot>
-        <tr>
-          <td class="fl" colspan="7">Portfolio Total (25 hotels)</td>
-          <td class="fm" id="ft-mo">$10,050</td>
-          <td class="fa" id="ft-ann">$120,600 / yr</td>
-        </tr>
-      </tfoot>
-    </table>
+  <div class="tbl-wrap">
+  <table id="ptable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Property</th>
+        <th class="c">Type</th>
+        <th class="c">Inventory<br><span style="font-weight:400;font-size:.68rem;opacity:.7">$200/mo</span></th>
+        <th class="c">Culinary<br><span style="font-weight:400;font-size:.68rem;opacity:.7">$200/mo</span></th>
+        <th>Bundle</th>
+        <th>Add-Ons</th>
+        <th class="r">Row Total</th>
+      </tr>
+    </thead>
+    <tbody id="pbody"></tbody>
+    <tfoot>
+      <tr class="tr-list">
+        <td colspan="5" class="r" style="color:#bbb;font-size:.8rem">At list price (monthly):</td>
+        <td id="tf-lb"></td><td id="tf-la"></td><td class="r" id="tf-lt"></td>
+      </tr>
+      <tr class="tr-your">
+        <td colspan="5" class="r">Your price (monthly):</td>
+        <td id="tf-yb"></td><td id="tf-ya"></td><td class="r" id="tf-yt"></td>
+      </tr>
+      <tr class="tr-save">
+        <td colspan="5" class="r">Monthly savings vs. list:</td>
+        <td id="tf-sb"></td><td id="tf-sa"></td><td class="r" id="tf-st"></td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <div class="note">
+    <strong>Setup fee fully waived</strong> &mdash; a $12,500 value included at no cost &middot;
+    All pricing per property/month, billed annually &middot;
+    List price: $650/mo bundle, $250/mo per add-on &middot;
+    Full Service (2 properties) at $500/mo (23% off) &middot; Select Service (23 properties) at $400/mo (38% off)
   </div>
 </div>
 
 <script>
-const P=[["Margaritaville Fort Myers Beach", "F", 250, false, 450, 200, 200, 1000], ["AC Hotel St. Louis Park", "F", 126, false, 450, 200, 200, 1000], ["Courtyard by Marriott Maple Grove", "L", 115, false, 375, 200, 200, 500], ["Courtyard by Marriott Roseville", "L", 120, false, 450, 200, 200, 500], ["Hilton Garden Inn Eagan", "L", 99, false, 375, 200, 200, 500], ["Hilton Garden Inn Shoreview", "L", 99, false, 375, 200, 200, 500], ["Holiday Inn Maple Grove", "L", 136, false, 450, 200, 200, 500], ["Compass Naples", "L", 122, false, 450, 200, 200, 500], ["Best Western Plus Willmar", "L", 92, false, 375, 200, 200, 500], ["Country Inn & Suites Willmar", "L", 50, false, 375, 200, 200, 500], ["Hampton Inn Eden Prairie", "L", 105, false, 375, 200, 200, 500], ["Hampton Inn Fairmont", "L", 51, false, 375, 200, 200, 500], ["Hampton Inn Roseville", "L", 100, false, 375, 200, 200, 500], ["Hampton Inn Spicer", "L", 51, false, 375, 200, 200, 500], ["Best Western Fairmont", "L", 101, false, 375, 200, 200, 500], ["Holiday Inn Express Willmar", "L", 73, false, 375, 200, 200, 500], ["Home2 Suites Roseville", "L", 102, false, 375, 200, 200, 500], ["Residence Inn Maple Grove", "L", 96, false, 375, 200, 200, 500], ["Residence Inn Roseville", "L", 108, false, 375, 200, 200, 500], ["SpringHill Suites Maple Grove", "L", 84, false, 375, 200, 200, 500], ["Staybridge Suites Maple Grove", "L", 119, false, 375, 200, 200, 500], ["Hampton Inn Maple Grove", "L", 120, false, 450, 200, 200, 500], ["Homewood Suites New Brighton", "L", 124, false, 450, 200, 200, 500], ["Homewood Suites St. Louis Park", "L", 125, false, 450, 200, 200, 500], ["Staybridge Suites Bloomington", "L", 127, false, 450, 200, 200, 500]];
-const POS=["\u2014 Select POS \u2014", "Toast", "Oracle Micros Simphony", "Oracle MICROS 3700", "Aloha POS by NCR", "Shiji Infrasys", "Square for Restaurants", "Clover", "Squirrel POS", "Revel Systems", "Agilysys InfoGenesis", "Lightspeed Restaurant", "POSitouch", "Silverware POS", "Digital Dining by Menusoft", "Heartland Restaurant", "SpotOn Restaurant", "Simphony (Marriott-Managed)", "IRIS (F&B Ordering)", "Other / Custom", "TBD / Unknown"];
-let af='all',st='';
-
-const fmt=n=>'$'+n.toLocaleString('en-US');
-const fmtA=n=>'$'+(n*12).toLocaleString('en-US')+' / yr';
-
+var PROPS = [
+  {name:'TPI Property 01',type:'FS'},{name:'TPI Property 02',type:'FS'},
+  {name:'TPI Property 03',type:'SS'},{name:'TPI Property 04',type:'SS'},{name:'TPI Property 05',type:'SS'},
+  {name:'TPI Property 06',type:'SS'},{name:'TPI Property 07',type:'SS'},{name:'TPI Property 08',type:'SS'},
+  {name:'TPI Property 09',type:'SS'},{name:'TPI Property 10',type:'SS'},{name:'TPI Property 11',type:'SS'},
+  {name:'TPI Property 12',type:'SS'},{name:'TPI Property 13',type:'SS'},{name:'TPI Property 14',type:'SS'},
+  {name:'TPI Property 15',type:'SS'},{name:'TPI Property 16',type:'SS'},{name:'TPI Property 17',type:'SS'},
+  {name:'TPI Property 18',type:'SS'},{name:'TPI Property 19',type:'SS'},{name:'TPI Property 20',type:'SS'},
+  {name:'TPI Property 21',type:'SS'},{name:'TPI Property 22',type:'SS'},{name:'TPI Property 23',type:'SS'},
+  {name:'TPI Property 24',type:'SS'},{name:'TPI Property 25',type:'SS'}
+];
+var PB = {FS:500,SS:400};
+var LB = 650;
+var PA = 200;
+var LA = 250;
+function fmt(n){return '$'+n.toLocaleString();}
 function build(){
-  const tb=document.getElementById('tb');
-  tb.innerHTML='';
-  [['F','Full-Service Hotels'],['L','Select-Service Hotels']].forEach(([st2,sl])=>{
-    const grp=P.filter(p=>p[1]===st2);
-    if(!grp.length) return;
-    const hr=document.createElement('tr');
-    hr.classList.add('sr'); hr.dataset.sec=st2;
-    hr.innerHTML=`<td colspan="9">${sl}</td>`;
-    tb.appendChild(hr);
-    grp.forEach(p=>{
-      const [nm,tp,rm,,bp,ip,cp]=p;
-      const idx=P.indexOf(p);
-      const chip=rm>=120
-        ?'<span class="dc d31">≥120 · 31% off</span>'
-        :'<span class="dc d42">&lt;120 · 42% off</span>';
-      const badge=tp==='F'?'<span class="b2 bfs">FS</span>':'<span class="b2 bls">LS</span>';
-      const opts=POS.map(o=>`<option>${o}</option>`).join('');
-      const tr=document.createElement('tr');
-      tr.dataset.idx=idx; tr.dataset.type=tp; tr.dataset.name=nm.toLowerCase();
-      tr.innerHTML=`
-        <td class="pn">${nm}${chip}</td>
-        <td>${badge}</td>
-        <td class="rv">${rm}</td>
-        <td class="bp">${fmt(bp)}</td>
-        <td class="tc2"><div class="twp">
-          <label class="tog"><input type="checkbox" class="ic" onchange="tog(${idx})"><div class="ttr"></div><div class="tth"></div></label>
-          <span class="tpr il">—</span>
-        </div></td>
-        <td class="tc2"><div class="twp">
-          <label class="tog"><input type="checkbox" class="cc" onchange="tog(${idx})"><div class="ttr"></div><div class="tth"></div></label>
-          <span class="tpr cl">—</span>
-        </div></td>
-        <td><select class="ps ph2" id="ps-${idx}">${opts}</select></td>
-        <td class="rt" id="rt-${idx}">${fmt(bp)}</td>
-        <td class="ra" id="ra-${idx}">${fmtA(bp)}</td>
-      `;
-      tb.appendChild(tr);
-    });
+  var body=document.getElementById('pbody'),rows='';
+  PROPS.forEach(function(p,i){
+    rows+='<tr class="'+(p.type==='FS'?'fs':'ss')+'-row">';
+    rows+='<td>'+(i+1)+'</td>';
+    rows+='<td class="pname">'+p.name+'</td>';
+    rows+='<td class="c"><span class="ptype-'+p.type.toLowerCase()+'">'+p.type+'</span></td>';
+    rows+='<td class="c"><input type="checkbox" id="inv'+i+'" onchange="recalc()"></td>';
+    rows+='<td class="c"><input type="checkbox" id="cul'+i+'" onchange="recalc()"></td>';
+    rows+='<td class="bprice" id="rb'+i+'">'+fmt(PB[p.type])+'</td>';
+    rows+='<td id="ra'+i+'">&mdash;</td>';
+    rows+='<td class="r rtotal" id="rt'+i+'">'+fmt(PB[p.type])+'</td>';
+    rows+='</tr>';
   });
-  recalc(); applyF();
+  body.innerHTML=rows;
 }
-
-function tog(idx){
-  const tr=document.querySelector(`tr[data-idx="${idx}"]`);
-  const ic=tr.querySelector('.ic'), cc=tr.querySelector('.cc');
-  const il=tr.querySelector('.il'), cl=tr.querySelector('.cl');
-  const ps=document.getElementById(`ps-${idx}`);
-  const [,,,,bp,ip,cp]=P[idx];
-  const hi=ic.checked, hc=cc.checked;
-  il.textContent=hi?fmt(ip):'—'; il.classList.toggle('on',hi);
-  cl.textContent=hc?fmt(cp):'—'; cl.classList.toggle('on',hc);
-  ps.classList.toggle('ph2',!hc);
-  document.getElementById(`rt-${idx}`).textContent=fmt(bp+(hi?ip:0)+(hc?cp:0));
-  document.getElementById(`ra-${idx}`).textContent=fmtA(bp+(hi?ip:0)+(hc?cp:0));
-  recalc();
-}
-
 function recalc(){
-  let mo=0,inv=0,cul=0;
-  P.forEach((p,i)=>{
-    const tr=document.querySelector(`tr[data-idx="${i}"]`);
-    if(!tr) return;
-    const hi=tr.querySelector('.ic').checked, hc=tr.querySelector('.cc').checked;
-    mo+=p[4]+(hi?p[5]:0)+(hc?p[6]:0);
-    if(hi) inv++; if(hc) cul++;
+  var tb=0,ta=0,lb=0,la=0;
+  PROPS.forEach(function(p,i){
+    var inv=document.getElementById('inv'+i).checked;
+    var cul=document.getElementById('cul'+i).checked;
+    var b=PB[p.type],a=(inv?PA:0)+(cul?PA:0),r=b+a;
+    document.getElementById('rb'+i).textContent=fmt(b);
+    document.getElementById('ra'+i).innerHTML=a?fmt(a):'&mdash;';
+    document.getElementById('rt'+i).textContent=fmt(r);
+    tb+=b;ta+=a;lb+=LB;la+=(inv?LA:0)+(cul?LA:0);
   });
-  document.getElementById('s-mo').textContent=fmt(mo)+'/mo';
-  document.getElementById('s-arr').textContent=fmt(mo*12)+'/yr';
-  document.getElementById('s-inv').textContent=inv+' props';
-  document.getElementById('s-cul').textContent=cul+' props';
-  document.getElementById('ft-mo').textContent=fmt(mo);
-  document.getElementById('ft-ann').textContent=fmtA(mo);
-  document.getElementById('s-note').textContent=`25 properties · ${fmt(mo)}/mo · ${fmt(mo*12)}/yr ARR`;
+  var tm=tb+ta,tyr=tm*12,lm=lb+la,sm=lm-tm,syr=sm*12;
+  document.getElementById('s-mo').textContent=fmt(tm);
+  document.getElementById('s-yr').textContent=fmt(tyr);
+  document.getElementById('s-save').textContent=fmt(syr);
+  document.getElementById('tf-lb').textContent=fmt(lb);
+  document.getElementById('tf-la').innerHTML=la?fmt(la):'&mdash;';
+  document.getElementById('tf-lt').textContent=fmt(lm);
+  document.getElementById('tf-yb').textContent=fmt(tb);
+  document.getElementById('tf-ya').innerHTML=ta?fmt(ta):'&mdash;';
+  document.getElementById('tf-yt').textContent=fmt(tm);
+  document.getElementById('tf-sb').textContent=fmt(lb-tb);
+  document.getElementById('tf-sa').innerHTML=(la-ta)?fmt(la-ta):'&mdash;';
+  document.getElementById('tf-st').textContent=fmt(sm);
 }
-
-function applyF(){
-  document.querySelectorAll('#tb tr').forEach(tr=>{
-    if(tr.classList.contains('sr')){tr.style.display=(af==='all'||tr.dataset.sec===af)?'':'none';return;}
-    const tm=af==='all'||tr.dataset.type===af;
-    const sm=!st||(tr.dataset.name||'').includes(st);
-    tr.style.display=(tm&&sm)?'':'none';
-  });
-}
-function filt(t,btn){af=t;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyF();}
-function fsrch(v){st=v.toLowerCase();applyF();}
-
-build();
-</script>
-<script>
-document.head.insertAdjacentHTML('beforeend','<style>.dc{font-size:11px!important;font-weight:800!important;padding:3px 9px!important;border-radius:4px!important;margin-left:6px!important}</style>');
-document.querySelectorAll('.li span').forEach(function(s){if(/d+% off/.test(s.textContent)){s.style.fontSize='12px';s.style.fontWeight='800';s.style.color='var(--mint-dark)';s.textContent=s.textContent.toUpperCase();}});
-document.querySelectorAll('.dc.d31').forEach(function(e){e.textContent='31% off list · save $200/mo';});
-document.querySelectorAll('.dc.d42').forEach(function(e){e.textContent='42% off list · save $275/mo';});
-(function(){var sbi=document.querySelector('.sbi');var sn=document.getElementById('s-note');var sd=document.createElement('div');sd.className='sd';sbi.insertBefore(sd,sn);var st=document.createElement('div');st.className='st';st.innerHTML='<div class="stl" style="color:var(--mint-dark)">You Save vs. List</div><div class="stv m" id="s-save">$6,200/mo</div>';sbi.insertBefore(st,sn);})();
-(function(){var tf=document.querySelector('tfoot');var pr=tf.querySelector('tr');var lr=document.createElement('tr');lr.innerHTML='<td class="fl" colspan="7" style="opacity:.5">At List Price</td><td id="ft-list" style="text-align:right;font-size:14px;color:rgba(255,255,255,.4);text-decoration:line-through">$16,250</td><td id="ft-list-ann" style="text-align:right;font-size:11px;color:rgba(255,255,255,.35);text-decoration:line-through">$195,000 / yr</td>';tf.insertBefore(lr,pr);pr.querySelector('.fl').textContent='Your Price — Portfolio Total (25 hotels)';var sr=document.createElement('tr');sr.style.background='rgba(0,178,138,.2)';sr.innerHTML='<td class="fl" colspan="7" style="color:var(--mint)">YOUR SAVINGS (vs. List Price)</td><td id="ft-save" style="text-align:right;font-size:20px;font-weight:900;color:var(--mint)">$6,200</td><td id="ft-save-ann" style="text-align:right;font-size:13px;color:rgba(0,178,138,.8)">$74,400 / yr</td>';tf.appendChild(sr);})();
-function recalc(){var mo=0,inv=0,cul=0,listMo=0;var LA=650,LI=250,LC=250;P.forEach(function(p,i){var tr=document.querySelector('tr[data-idx="'+i+'"]');if(!tr)return;var hi=tr.querySelector('.ic').checked,hc=tr.querySelector('.cc').checked;mo+=p[4]+(hi?p[5]:0)+(hc?p[6]:0);listMo+=LA+(hi?LI:0)+(hc?LC:0);if(hi)inv++;if(hc)cul++;});var save=listMo-mo;document.getElementById('s-mo').textContent=fmt(mo)+'/mo';document.getElementById('s-arr').textContent=fmt(mo*12)+'/yr';document.getElementById('s-inv').textContent=inv+' props';document.getElementById('s-cul').textContent=cul+' props';document.getElementById('s-save').textContent=fmt(save)+'/mo';document.getElementById('ft-mo').textContent=fmt(mo);document.getElementById('ft-ann').textContent=fmtA(mo);document.getElementById('ft-list').textContent=fmt(listMo);document.getElementById('ft-list-ann').textContent=fmtA(listMo);document.getElementById('ft-save').textContent=fmt(save);document.getElementById('ft-save-ann').textContent=fmtA(save);document.getElementById('s-note').textContent='25 properties · '+fmt(mo)+'/mo · saving '+fmt(save)+'/mo vs. list';}
-recalc();
+build();recalc();
 </script>
 </body>
 </html>
