@@ -5,17 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TPI Hospitality × Reeco — Interactive Pricing Proposal</title>
 <style>
-  :root {
-    --navy:#0B1F3A; --navy-800:#162F52; --mint:#00B28A; --mint-light:#E6F7F3;
-    --mint-dark:#008F6E; --stone:#F5F5F3; --stone-200:#E8E8E4; --stone-600:#8A8A84;
-    --white:#fff; --red:#C0392B; --amber:#F59E0B;
-  }
+  :root{--navy:#0B1F3A;--navy-800:#162F52;--mint:#00B28A;--mint-light:#E6F7F3;--mint-dark:#008F6E;--stone:#F5F5F3;--stone-200:#E8E8E4;--stone-600:#8A8A84;--white:#fff;--red:#C0392B}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--stone);color:var(--navy);font-size:13px}
-  :root{--h-header:56px;--h-summary:58px;--h-legend:40px;
-    --stick-summary:var(--h-header);
-    --stick-legend:calc(var(--h-header) + var(--h-summary));
-    --stick-thead:calc(var(--h-header) + var(--h-summary) + var(--h-legend))}
+  :root{--h-header:56px;--h-summary:58px;--h-legend:40px;--stick-summary:var(--h-header);--stick-legend:calc(var(--h-header) + var(--h-summary));--stick-thead:calc(var(--h-header) + var(--h-summary) + var(--h-legend))}
   .page-header{background:var(--navy);color:white;padding:14px 32px;height:var(--h-header);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.22)}
   .phi{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
   .brand{display:flex;align-items:center;gap:10px}
@@ -31,7 +24,7 @@
   .stat-value{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-.02em;font-feature-settings:"tnum"}
   .stat-value.mint{color:var(--mint-dark)}
   .sdiv{width:1px;height:36px;background:var(--stone-200)}
-  .snote{font-size:11px;color:var(--stone-600);font-style:italic;margin-left:auto;text-align:right;max-width:260px;line-height:1.4}
+  .snote{font-size:11px;color:var(--stone-600);font-style:italic;margin-left:auto;text-align:right;max-width:280px;line-height:1.4}
   .legend-bar{background:var(--mint-light);border-bottom:1px solid rgba(0,178,138,.2);padding:0 32px;height:var(--h-legend);position:sticky;top:var(--stick-legend);z-index:98}
   .lbi{max-width:1400px;margin:0 auto;height:100%;display:flex;align-items:center;gap:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
   .lbi::-webkit-scrollbar{display:none}
@@ -59,7 +52,6 @@
   .badge2{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.5px}
   .bfs{background:var(--navy);color:white}
   .bls{background:var(--stone-200);color:var(--navy)}
-  .br{background:var(--amber);color:var(--navy)}
   .rooms{font-size:12px;color:var(--stone-600);font-feature-settings:"tnum";text-align:right}
   .base-price{font-size:13px;font-weight:700;color:var(--navy);font-feature-settings:"tnum";text-align:right;white-space:nowrap}
   .toggle-cell{text-align:center}
@@ -85,8 +77,6 @@
   tfoot .ftotal{text-align:right;font-size:16px;font-feature-settings:"tnum";color:var(--mint)}
   tfoot .fann{text-align:right;font-size:13px;font-feature-settings:"tnum";color:rgba(255,255,255,.7)}
   .sec-row td{background:var(--stone);padding:6px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--stone-600);border-bottom:1px solid var(--stone-200)}
-  tr.excluded{opacity:.4}
-  @media(max-width:1100px){.table-wrap{overflow-x:auto}}
 </style>
 </head>
 <body>
@@ -98,7 +88,7 @@
       <div class="divider">×</div>
       <div>
         <div class="ht">TPI Hospitality — Interactive Pricing Proposal</div>
-        <div class="hs">Prepared June 2026 &nbsp;·&nbsp; Toggle Inventory + Culinary per property &nbsp;·&nbsp; Totals update live</div>
+        <div class="hs">Prepared June 2026 &nbsp;·&nbsp; 25 hotels &nbsp;·&nbsp; Toggle Inventory + Culinary per property &nbsp;·&nbsp; Totals update live</div>
       </div>
     </div>
     <div class="badge">Confidential · For TPI Hospitality</div>
@@ -107,31 +97,31 @@
 
 <div class="summary-bar">
   <div class="sbi">
-    <div class="stat"><div class="stat-label">Properties</div><div class="stat-value" id="s-props">28</div></div>
+    <div class="stat"><div class="stat-label">Properties</div><div class="stat-value" id="s-props">25</div></div>
     <div class="sdiv"></div>
-    <div class="stat"><div class="stat-label">Monthly (Floor)</div><div class="stat-value mint" id="s-monthly">$13,827.50</div></div>
+    <div class="stat"><div class="stat-label">Monthly (Floor)</div><div class="stat-value mint" id="s-monthly">$12,252.50</div></div>
     <div class="sdiv"></div>
-    <div class="stat"><div class="stat-label">Annual ARR</div><div class="stat-value mint" id="s-arr">$165,930</div></div>
+    <div class="stat"><div class="stat-label">Annual ARR</div><div class="stat-value mint" id="s-arr">$147,030</div></div>
     <div class="sdiv"></div>
     <div class="stat"><div class="stat-label">Inventory On</div><div class="stat-value" id="s-inv">0 props</div></div>
     <div class="sdiv"></div>
     <div class="stat"><div class="stat-label">Culinary On</div><div class="stat-value" id="s-cul">0 props</div></div>
     <div class="sdiv"></div>
-    <div class="stat"><div class="stat-label">Setup Credit</div><div class="stat-value" id="s-setup">$16,750 waived</div></div>
+    <div class="stat"><div class="stat-label">Setup Credit</div><div class="stat-value" id="s-setup">$13,500 waived</div></div>
     <div class="snote" id="s-note">Toggle add-ons per property to model your configuration</div>
   </div>
 </div>
 
 <div class="legend-bar">
   <div class="lbi">
-    <span class="ll">Pricing Tiers (120-room threshold):</span>
-    <span class="li"><span class="badge2 bfs">FS</span> &lt;120 rooms <span class="lprice mint">$455/mo bundle</span></span>
-    <span class="li"><span class="badge2 bfs">FS</span> ≥120 rooms <span class="lprice mint">$552.50/mo bundle</span></span>
-    <span class="li"><span class="badge2 bls">LS</span> &lt;120 rooms <span class="lprice">$455/mo bundle</span></span>
-    <span class="li"><span class="badge2 bls">LS</span> ≥120 rooms <span class="lprice">$552.50/mo bundle</span></span>
-    <span class="li">+ Inventory (FS) <span class="lprice">$175–$212.50</span></span>
-    <span class="li">+ Inventory (LS) <span class="lprice">$70–$85</span></span>
-    <span class="li">+ Culinary <span class="lprice">$175–$212.50</span></span>
+    <span class="ll">Pricing (120-room threshold):</span>
+    <span class="li"><span class="badge2 bfs">FS</span> ≥120 rooms <span class="lprice mint">$552.50/mo</span></span>
+    <span class="li"><span class="badge2 bfs">FS</span> &lt;120 rooms <span class="lprice mint">$455/mo</span></span>
+    <span class="li"><span class="badge2 bls">LS</span> ≥120 rooms <span class="lprice">$552.50/mo</span></span>
+    <span class="li"><span class="badge2 bls">LS</span> &lt;120 rooms <span class="lprice">$455/mo</span></span>
+    <span class="li">+ Inv (FS) <span class="lprice">$212.50 / $175</span></span>
+    <span class="li">+ Inv (LS) <span class="lprice">$85 / $70</span></span>
+    <span class="li">+ Culinary <span class="lprice">$212.50 / $175</span></span>
     <span class="li" style="color:var(--stone-600);font-size:10px;">All setup fees waived</span>
   </div>
 </div>
@@ -140,10 +130,9 @@
   <div class="table-card">
     <div class="toolbar">
       <span class="tlabel">Filter:</span>
-      <button class="fbtn active" onclick="ft('all',this)">All (28)</button>
-      <button class="fbtn" onclick="ft('F',this)">Full-Service (7)</button>
-      <button class="fbtn" onclick="ft('L',this)">Select-Service (18)</button>
-      <button class="fbtn" onclick="ft('R',this)">Restaurants (3)</button>
+      <button class="fbtn active" onclick="ft('all',this)">All (25)</button>
+      <button class="fbtn" onclick="ft('F',this)">Full-Service (2)</button>
+      <button class="fbtn" onclick="ft('L',this)">Select-Service (23)</button>
       <input class="search" type="text" placeholder="Search properties…" oninput="fs2(this.value)">
     </div>
     <table id="t">
@@ -163,9 +152,9 @@
       <tbody id="tb"></tbody>
       <tfoot>
         <tr>
-          <td class="flabel" colspan="7">Portfolio Total</td>
-          <td class="ftotal" id="ft-mo">—</td>
-          <td class="fann" id="ft-ann">—</td>
+          <td class="flabel" colspan="7">Portfolio Total (25 hotels)</td>
+          <td class="ftotal" id="ft-mo">$12,252.50</td>
+          <td class="fann" id="ft-ann">$147,030 / yr</td>
         </tr>
       </tfoot>
     </table>
@@ -173,61 +162,53 @@
 </div>
 
 <script>
-const PROPS = [["Courtyard by Marriott Maple Grove", "F", 115, false, 455.0, 175.0, 175.0, 1000], ["Courtyard by Marriott Roseville", "F", 120, false, 552.5, 212.5, 212.5, 1000], ["Hilton Garden Inn Eagan", "F", 99, false, 455.0, 175.0, 175.0, 1000], ["Hilton Garden Inn Shoreview", "F", 99, false, 455.0, 175.0, 175.0, 1000], ["Holiday Inn Maple Grove", "F", 136, false, 552.5, 212.5, 212.5, 1000], ["Margaritaville Fort Myers Beach", "F", 250, false, 552.5, 212.5, 212.5, 1000], ["Compass Naples", "F", 122, false, 552.5, 212.5, 212.5, 1000], ["Best Western Plus Willmar", "L", 92, false, 455.0, 70.0, 175.0, 500], ["Country Inn & Suites Willmar", "L", 50, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Eden Prairie", "L", 105, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Fairmont", "L", 51, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Roseville", "L", 100, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Spicer", "L", 51, false, 455.0, 70.0, 175.0, 500], ["Best Western Fairmont", "L", 101, false, 455.0, 70.0, 175.0, 500], ["Holiday Inn Express Willmar", "L", 73, false, 455.0, 70.0, 175.0, 500], ["Home2 Suites Roseville", "L", 102, false, 455.0, 70.0, 175.0, 500], ["Residence Inn Maple Grove", "L", 96, false, 455.0, 70.0, 175.0, 500], ["Residence Inn Roseville", "L", 108, false, 455.0, 70.0, 175.0, 500], ["SpringHill Suites Maple Grove", "L", 84, false, 455.0, 70.0, 175.0, 500], ["Staybridge Suites Maple Grove", "L", 119, false, 455.0, 70.0, 175.0, 500], ["AC Hotel St. Louis Park", "L", 126, false, 552.5, 85.0, 212.5, 500], ["Hampton Inn Maple Grove", "L", 120, false, 552.5, 85.0, 212.5, 500], ["Homewood Suites New Brighton", "L", 124, false, 552.5, 85.0, 212.5, 500], ["Homewood Suites St. Louis Park", "L", 125, false, 552.5, 85.0, 212.5, 500], ["Staybridge Suites Bloomington", "L", 127, false, 552.5, 85.0, 212.5, 500], ["Green Mill Fairmont", "R", 0, false, 525.0, 0, 0, 250], ["Green Mill Willmar", "R", 0, false, 525.0, 0, 0, 250], ["Ruffs Restaurant Willmar", "R", 0, false, 525.0, 0, 0, 250]];
+const PROPS = [["Margaritaville Fort Myers Beach", "F", 250, false, 552.5, 212.5, 212.5, 1000], ["AC Hotel St. Louis Park", "F", 126, false, 552.5, 212.5, 212.5, 1000], ["Courtyard by Marriott Maple Grove", "L", 115, false, 455.0, 70.0, 175.0, 500], ["Courtyard by Marriott Roseville", "L", 120, false, 552.5, 85.0, 212.5, 500], ["Hilton Garden Inn Eagan", "L", 99, false, 455.0, 70.0, 175.0, 500], ["Hilton Garden Inn Shoreview", "L", 99, false, 455.0, 70.0, 175.0, 500], ["Holiday Inn Maple Grove", "L", 136, false, 552.5, 85.0, 212.5, 500], ["Compass Naples", "L", 122, false, 552.5, 85.0, 212.5, 500], ["Best Western Plus Willmar", "L", 92, false, 455.0, 70.0, 175.0, 500], ["Country Inn & Suites Willmar", "L", 50, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Eden Prairie", "L", 105, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Fairmont", "L", 51, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Roseville", "L", 100, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Spicer", "L", 51, false, 455.0, 70.0, 175.0, 500], ["Best Western Fairmont", "L", 101, false, 455.0, 70.0, 175.0, 500], ["Holiday Inn Express Willmar", "L", 73, false, 455.0, 70.0, 175.0, 500], ["Home2 Suites Roseville", "L", 102, false, 455.0, 70.0, 175.0, 500], ["Residence Inn Maple Grove", "L", 96, false, 455.0, 70.0, 175.0, 500], ["Residence Inn Roseville", "L", 108, false, 455.0, 70.0, 175.0, 500], ["SpringHill Suites Maple Grove", "L", 84, false, 455.0, 70.0, 175.0, 500], ["Staybridge Suites Maple Grove", "L", 119, false, 455.0, 70.0, 175.0, 500], ["Hampton Inn Maple Grove", "L", 120, false, 552.5, 85.0, 212.5, 500], ["Homewood Suites New Brighton", "L", 124, false, 552.5, 85.0, 212.5, 500], ["Homewood Suites St. Louis Park", "L", 125, false, 552.5, 85.0, 212.5, 500], ["Staybridge Suites Bloomington", "L", 127, false, 552.5, 85.0, 212.5, 500]];
 const POS = ["\u2014 Select POS \u2014", "Toast", "Oracle Micros Simphony", "Oracle MICROS 3700", "Aloha POS by NCR", "Shiji Infrasys", "Square for Restaurants", "Clover", "Squirrel POS", "Revel Systems", "Agilysys InfoGenesis", "Lightspeed Restaurant", "POSitouch", "Silverware POS", "Digital Dining by Menusoft", "Heartland Restaurant", "SpotOn Restaurant", "Simphony (Marriott-Managed)", "IRIS (F&B Ordering)", "Other / Custom", "TBD / Unknown"];
-let activeFilter = 'all', searchTerm = '';
+let activeFilter='all', searchTerm='';
 
 function fmt(n){
-  if(n===0) return '—';
   return '$'+n.toLocaleString('en-US',{minimumFractionDigits:n%1===0?0:2,maximumFractionDigits:2});
 }
 function fmtA(n){return '$'+Math.round(n*12).toLocaleString('en-US')+' / yr';}
 
 function buildTable(){
-  const tb = document.getElementById('tb');
+  const tb=document.getElementById('tb');
   tb.innerHTML='';
-  const sections=[['F','Full-Service Hotels'],['L','Select-Service Hotels'],['R','Restaurants']];
-  sections.forEach(([stype, slabel])=>{
-    const group = PROPS.filter(p=>p[1]===stype);
+  [['F','Full-Service Hotels'],['L','Select-Service Hotels']].forEach(([stype,slabel])=>{
+    const group=PROPS.filter(p=>p[1]===stype);
     if(!group.length) return;
     const hr=document.createElement('tr');
     hr.classList.add('sec-row'); hr.dataset.sec=stype;
     hr.innerHTML=`<td colspan="9">${slabel}</td>`;
     tb.appendChild(hr);
     group.forEach(p=>{
-      const [name,type,rooms,closed,bPrice,iPrice,cPrice,sc]=p;
+      const [name,type,rooms,closed,bPrice,iPrice,cPrice]=p;
       const idx=PROPS.indexOf(p);
-      const isR=(type==='R');
-      const discLabel=!isR?(rooms>=120?'<span class="disc-chip d15">15% off</span>':'<span class="disc-chip d30">30% off</span>'):'';
-      const typeBadge=type==='F'?'<span class="badge2 bfs">FS</span>':type==='L'?'<span class="badge2 bls">LS</span>':'<span class="badge2 br">R</span>';
+      const discChip=rooms>=120
+        ?'<span class="disc-chip d15">15% off</span>'
+        :'<span class="disc-chip d30">30% off</span>';
+      const typeBadge=type==='F'
+        ?'<span class="badge2 bfs">FS</span>'
+        :'<span class="badge2 bls">LS</span>';
       const posOpts=POS.map(o=>`<option>${o}</option>`).join('');
       const tr=document.createElement('tr');
       tr.dataset.idx=idx; tr.dataset.type=type; tr.dataset.name=name.toLowerCase();
-      if(closed) tr.classList.add('excluded');
       tr.innerHTML=`
-        <td class="prop-name">${name}${discLabel}</td>
+        <td class="prop-name">${name} ${discChip}</td>
         <td>${typeBadge}</td>
-        <td class="rooms">${rooms>0?rooms.toLocaleString():'—'}</td>
-        <td class="base-price">${bPrice>0?fmt(bPrice):'—'}</td>
-        <td class="toggle-cell">${!isR&&!closed?`
-          <div class="twrap">
-            <label class="toggle">
-              <input type="checkbox" class="inv-chk" onchange="onToggle(${idx})">
-              <div class="ttrack"></div><div class="tthumb"></div>
-            </label>
-            <span class="tprice inv-lbl">—</span>
-          </div>`:'<span style="color:var(--stone-200)">—</span>'}</td>
-        <td class="toggle-cell">${!isR&&!closed?`
-          <div class="twrap">
-            <label class="toggle">
-              <input type="checkbox" class="cul-chk" onchange="onToggle(${idx})">
-              <div class="ttrack"></div><div class="tthumb"></div>
-            </label>
-            <span class="tprice cul-lbl">—</span>
-          </div>`:'<span style="color:var(--stone-200)">—</span>'}</td>
-        <td>${!isR&&!closed?`<select class="pos-sel pos-hidden" id="pos-${idx}">${posOpts}</select>`:''}</td>
-        <td class="rowtotal" id="rt-${idx}">${!isR&&!closed?fmt(bPrice):'—'}</td>
-        <td class="rowann" id="ra-${idx}">${!isR&&!closed?fmtA(bPrice):'—'}</td>
+        <td class="rooms">${rooms.toLocaleString()}</td>
+        <td class="base-price">${fmt(bPrice)}</td>
+        <td class="toggle-cell"><div class="twrap">
+          <label class="toggle"><input type="checkbox" class="inv-chk" onchange="onToggle(${idx})"><div class="ttrack"></div><div class="tthumb"></div></label>
+          <span class="tprice inv-lbl">—</span>
+        </div></td>
+        <td class="toggle-cell"><div class="twrap">
+          <label class="toggle"><input type="checkbox" class="cul-chk" onchange="onToggle(${idx})"><div class="ttrack"></div><div class="tthumb"></div></label>
+          <span class="tprice cul-lbl">—</span>
+        </div></td>
+        <td><select class="pos-sel pos-hidden" id="pos-${idx}">${posOpts}</select></td>
+        <td class="rowtotal" id="rt-${idx}">${fmt(bPrice)}</td>
+        <td class="rowann" id="ra-${idx}">${fmtA(bPrice)}</td>
       `;
       tb.appendChild(tr);
     });
@@ -243,13 +224,11 @@ function onToggle(idx){
   const invLbl=tr.querySelector('.inv-lbl');
   const culLbl=tr.querySelector('.cul-lbl');
   const posSel=document.getElementById(`pos-${idx}`);
-  const p=PROPS[idx];
-  const [,,,,bPrice,iPrice,cPrice]=p;
-  const hasInv=invChk&&invChk.checked;
-  const hasCul=culChk&&culChk.checked;
-  if(invLbl){ invLbl.textContent=hasInv?fmt(iPrice):'—'; invLbl.classList.toggle('on',hasInv); }
-  if(culLbl){ culLbl.textContent=hasCul?fmt(cPrice):'—'; culLbl.classList.toggle('on',hasCul); }
-  if(posSel) posSel.classList.toggle('pos-hidden',!hasCul);
+  const [,,,,bPrice,iPrice,cPrice]=PROPS[idx];
+  const hasInv=invChk.checked, hasCul=culChk.checked;
+  invLbl.textContent=hasInv?fmt(iPrice):'—'; invLbl.classList.toggle('on',hasInv);
+  culLbl.textContent=hasCul?fmt(cPrice):'—'; culLbl.classList.toggle('on',hasCul);
+  posSel.classList.toggle('pos-hidden',!hasCul);
   const total=bPrice+(hasInv?iPrice:0)+(hasCul?cPrice:0);
   document.getElementById(`rt-${idx}`).textContent=fmt(total);
   document.getElementById(`ra-${idx}`).textContent=fmtA(total);
@@ -257,19 +236,13 @@ function onToggle(idx){
 }
 
 function recalcAll(){
-  let monthly=0,invOn=0,culOn=0,activeProps=0;
+  let monthly=0,invOn=0,culOn=0;
   PROPS.forEach((p,idx)=>{
-    const [name,type,rooms,closed,bPrice,iPrice,cPrice]=p;
-    if(closed) return;
-    if(type==='R'){ monthly+=bPrice; activeProps++; return; }
-    if(rooms===0) return;
-    activeProps++;
+    const [,,,,bPrice,iPrice,cPrice]=p;
     const tr=document.querySelector(`tr[data-idx="${idx}"]`);
     if(!tr) return;
-    const invChk=tr.querySelector('.inv-chk');
-    const culChk=tr.querySelector('.cul-chk');
-    const hasInv=invChk&&invChk.checked;
-    const hasCul=culChk&&culChk.checked;
+    const hasInv=tr.querySelector('.inv-chk').checked;
+    const hasCul=tr.querySelector('.cul-chk').checked;
     monthly+=bPrice+(hasInv?iPrice:0)+(hasCul?cPrice:0);
     if(hasInv) invOn++;
     if(hasCul) culOn++;
@@ -280,14 +253,13 @@ function recalcAll(){
   document.getElementById('s-cul').textContent=culOn+' props';
   document.getElementById('ft-mo').textContent=fmt(monthly);
   document.getElementById('ft-ann').textContent=fmtA(monthly);
-  document.getElementById('s-note').textContent=`${activeProps} properties · ${fmt(monthly)}/mo · ${fmt(monthly*12)}/yr ARR`;
+  document.getElementById('s-note').textContent=`25 properties · ${fmt(monthly)}/mo · ${fmt(monthly*12)}/yr ARR`;
 }
 
 function applyFilter(){
   document.querySelectorAll('#tb tr').forEach(tr=>{
     if(tr.classList.contains('sec-row')){
-      tr.style.display=(activeFilter==='all'||tr.dataset.sec===activeFilter)?'':'none';
-      return;
+      tr.style.display=(activeFilter==='all'||tr.dataset.sec===activeFilter)?'':'none'; return;
     }
     const tm=activeFilter==='all'||tr.dataset.type===activeFilter;
     const sm=!searchTerm||(tr.dataset.name||'').includes(searchTerm);
@@ -297,10 +269,9 @@ function applyFilter(){
 function ft(type,btn){
   activeFilter=type;
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilter();
+  btn.classList.add('active'); applyFilter();
 }
-function fs2(val){ searchTerm=val.toLowerCase(); applyFilter(); }
+function fs2(val){searchTerm=val.toLowerCase(); applyFilter();}
 
 buildTable();
 </script>
